@@ -1,0 +1,29 @@
+{
+  "name": "dio-ecommerce-api",
+  "version": "1.0.0",
+  "description": "Api DIO Ecommerce",
+  "main": "./dist/index.js",
+  "scripts": {
+    "start": "node ./",
+    "build": "tsc -p .",
+    "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --no-notify src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "JoaoVictorGuiziGerardi",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.6.4",
+    "@types/pg": "^8.6.5",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "http-status-codes": "^2.2.0",
+    "pg": "^8.7.3"
+  }
+}
