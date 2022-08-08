@@ -14,9 +14,9 @@ messagesRoutes.get('/messages', async (req: Request, res: Response) => {
 // Post de uma mensagem
 messagesRoutes.post('/messages', async (req: Request, res: Response) => {
     const newMessage = req.body;
-    const uuid = await messageRepository.createMessage(newMessage);
+    await messageRepository.createMessage(newMessage);
     console.log(req.body);
-    res.status(CREATED).send(uuid);
+    res.status(CREATED).json(req.body.autor);
 })
 
 export default messagesRoutes;

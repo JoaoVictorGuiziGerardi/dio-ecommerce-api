@@ -6,6 +6,7 @@ class MessageRepository {
         const query = `
             SELECT *
             FROM mensagens
+            ORDER BY dataMensagem DESC
         `;
     
         const { rows } = await db.query<Message>(query);
@@ -13,21 +14,18 @@ class MessageRepository {
         return rows || [];
     }
 
-    async createMessage(message: Message): Promise<string>{
+    async createMessage(message: Message): Promise<void>{
         const script = `
             INSERT INTO mensagens (
                 autor,
                 mensagem
             )
             VALUES ($1, $2);
-            RETURNING uuid
         `;
 
         const values = [message.autor, message.mensagem];
-
-        const { rows } = await db.query<{ uuid: string }>(script, values);
-        const [ newMessage ] = rows;
-        return newMessage.uuid;
+        await db.query<{ uuid: string }>(script, values);
+        
     }
 }
 
